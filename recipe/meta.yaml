@@ -33,6 +33,7 @@ requirements:
   run:
     - libevent
     - ncurses
+    - libutf8proc  # [osx]
 
 test:
   commands:
