@@ -42,7 +42,7 @@ test:
 
     # Check that no server is running.
     - $(tmux info || true) 2> >(grep "no server running on")  # [not osx]
-    - (tmux info 2>&1 || true) | grep -e "no server running on"  # [osx]
+    - (tmux info || true) >d 2>&1 && (grep -e "no server running on" d)  # [osx]
 about:
   home: https://tmux.github.io/
   license: ISC
