@@ -32,15 +32,15 @@ requirements:
 
   run:
     - libevent
+    - libutf8proc  # [osx]
     - ncurses
 
 test:
   commands:
     # Verify command existence.
     - which tmux
-
-    # Check that no server is running.
-    - $(tmux info || true) 2> >(grep "no server running on")
+    # Verify it executes. This must be done where no server is running, otherwise the test is likely to hang.
+    - $(tmux info || true) 2> >(grep "no server running")   # [not osx] tmux is running as part of the osx build system, so this test does not work there.
 
 about:
   home: https://tmux.github.io/
