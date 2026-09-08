@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/tmux/tmux/releases/download/{{ version }}/tmux-{{ version }}.tar.gz
+  url: https://github.com/{{ name }}/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 136db80cfbfba617a103401f52874e7c64927986b65b1b700350b6058ad69607
 
 build:
