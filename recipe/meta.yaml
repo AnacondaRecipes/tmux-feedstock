@@ -1,13 +1,13 @@
+{% set name = "tmux" %}
 {% set version = "3.6" %}
-{% set sha256 = "136db80cfbfba617a103401f52874e7c64927986b65b1b700350b6058ad69607" %}
 
 package:
-  name: tmux
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://github.com/tmux/tmux/releases/download/{{ version }}/tmux-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 136db80cfbfba617a103401f52874e7c64927986b65b1b700350b6058ad69607
 
 build:
   number: 0
