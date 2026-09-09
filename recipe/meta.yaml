@@ -1,39 +1,34 @@
-{% set version = "3.3a" %}
-{% set sha256 = "e4fd347843bd0772c4f48d6dde625b0b109b7a380ff15db21e97c11a4dcdf93f" %}
-{% set build_number = "1" %}
+{% set name = "tmux" %}
+{% set version = "3.6" %}
 
 package:
-  name: tmux
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/tmux/tmux/releases/download/{{ version }}/tmux-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://github.com/{{ name }}/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 136db80cfbfba617a103401f52874e7c64927986b65b1b700350b6058ad69607
 
 build:
-  number: {{ build_number }}
+  number: 0
   skip: true  # [win]
 
 requirements:
   build:
-    - gnuconfig  # [unix]
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - autoconf
     - automake
     - libtool
     - m4
     - make
     - pkg-config
-
+    - bison
+    - gnuconfig  # [unix]
   host:
-    - libevent
-    - libutf8proc  # [osx]
-    - ncurses
-
-  run:
-    - libevent
-    - libutf8proc  # [osx]
-    - ncurses
+    - libevent {{ libevent }}
+    - libutf8proc {{ libutf8proc }}  # [osx]
+    - ncurses {{ ncurses }}
 
 test:
   commands:
@@ -43,7 +38,7 @@ test:
     - $(tmux info || true) 2> >(grep "no server running")   # [not osx] tmux is running as part of the osx build system, so this test does not work there.
 
 about:
-  home: https://tmux.github.io/
+  home: https://tmux.github.io
   license: ISC
   license_family: OTHER
   license_file: COPYING
