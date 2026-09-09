@@ -26,13 +26,9 @@ requirements:
     - bison
     - gnuconfig  # [unix]
   host:
-    - libevent
-    - libutf8proc  # [osx]
-    - ncurses
-  run:
-    - libevent
-    - libutf8proc  # [osx]
-    - ncurses
+    - libevent {{ libevent }}
+    - libutf8proc {{ libutf8proc }}  # [osx]
+    - ncurses {{ ncurses }}
 
 test:
   commands:
